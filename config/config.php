@@ -5,7 +5,7 @@
  * Dynamically parses environment variables from:
  * 1. Process environment (Docker / Railway / Render / Production CLI)
  * 2. Dotenv file (.env in project root, if present)
- * 3. Sensible development defaults
+ * 3. Production defaults (Render PostgreSQL database)
  */
 
 // Singleton configuration cache
@@ -13,10 +13,6 @@ global $luminConfigCache;
 if ($luminConfigCache !== null) {
     return $luminConfigCache;
 }
-// Set uniform timezone to Indian Standard Time (Asia/Kolkata, UTC+5:30)
-date_default_timezone_set('Asia/Kolkata');
-
-// Support loading a local .env file if present in project root
 
 // -------------------------------------------------------------------
 // 1. Lightweight Dotenv Parser (zero external dependencies)
@@ -65,7 +61,7 @@ if (!function_exists('env')) {
 }
 
 // -------------------------------------------------------------------
-// Database Configuration (Supports MySQL & PostgreSQL)
+// Database Configuration (Supports Render PostgreSQL & MySQL)
 // -------------------------------------------------------------------
 $dbHost   = env('DB_HOST', env('MYSQLHOST', 'dpg-dbiuhk49v7es738kugf0-a'));
 $dbPort   = env('DB_PORT', env('MYSQLPORT', '5432'));
@@ -73,6 +69,7 @@ $dbName   = env('DB_NAME', env('MYSQLDATABASE', 'lumin_rndj'));
 $dbUser   = env('DB_USER', env('MYSQLUSER', 'lumin_rndj_user'));
 $dbPass   = env('DB_PASS', env('MYSQLPASSWORD', 'gZJJlO6EDCvXjvcMWPryqCVGgjQHZL4X'));
 $dbDriver = env('DB_CONNECTION', '');
+$dbSslMode = env('DB_SSLMODE', 'prefer');
 
 // Support full URL format (Render: DATABASE_URL, Railway: MYSQL_URL / DATABASE_URL)
 $dbUrl = env('DATABASE_URL', env('MYSQL_URL'));
@@ -107,7 +104,7 @@ if (empty($dbDriver)) {
 $luminConfigCache = [
     'app' => [
         'name' => 'Lumin Consultancy',
-        'env'  => env('APP_ENV', 'development'),
+        'env'  => env('APP_ENV', 'production'),
         'port' => (int)env('PORT', 8080),
     ],
     'db' => [
@@ -118,6 +115,7 @@ $luminConfigCache = [
         'user'    => $dbUser,
         'pass'    => $dbPass,
         'charset' => 'utf8mb4',
+        'sslmode' => $dbSslMode,
     ],
     'mail' => [
         'to'       => env('ENQUIRY_TO', 'ceo.lumin@gmail.com'),

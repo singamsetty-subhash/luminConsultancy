@@ -1,7 +1,7 @@
 <?php
 /**
  * Lumin Consultancy - Database Connection & Schema Provisioning
- * Supports MySQL and PostgreSQL with automated schema provisioning.
+ * Supports PostgreSQL (Render) and MySQL with automated schema provisioning.
  */
 
 class Database {
@@ -19,13 +19,14 @@ class Database {
         $config = require __DIR__ . '/config.php';
         $db = $config['db'];
 
-        $driver  = $db['driver'] ?? 'mysql';
-        $host    = $db['host'];
-        $port    = $db['port'];
-        $dbname  = $db['dbname'];
-        $user    = $db['user'];
-        $pass    = $db['pass'];
-        $charset = $db['charset'] ?? 'utf8mb4';
+        $driver   = $db['driver'] ?? 'pgsql';
+        $host     = $db['host'];
+        $port     = $db['port'];
+        $dbname   = $db['dbname'];
+        $user     = $db['user'];
+        $pass     = $db['pass'];
+        $charset  = $db['charset'] ?? 'utf8mb4';
+        $sslmode  = $db['sslmode'] ?? 'prefer';
 
         $isPgsql = ($driver === 'pgsql') || ($port == 5432) || str_starts_with((string)$host, 'dpg-') || str_contains((string)$host, 'postgres');
 
@@ -41,7 +42,11 @@ class Database {
 
         try {
             if ($isPgsql) {
-                $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+                // Cloud PostgreSQL (Render / Supabase / Neon / AWS RDS) requires SSL
+                if (str_contains((string)$host, 'render.com') || str_starts_with((string)$host, 'dpg-')) {
+                    $sslmode = 'require';
+                }
+                $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=$sslmode";
             } else {
                 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";
             }

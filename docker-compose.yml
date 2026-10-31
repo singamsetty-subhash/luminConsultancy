@@ -11,10 +11,13 @@ services:
       - .env
     environment:
       PORT: ${PORT:-8080}
+      DB_CONNECTION: pgsql
       DB_HOST: ${DB_HOST:-dpg-dbiuhk49v7es738kugf0-a}
       DB_PORT: ${DB_PORT:-5432}
       DB_NAME: ${DB_NAME:-lumin_rndj}
       DB_USER: ${DB_USER:-lumin_rndj_user}
       DB_PASS: ${DB_PASS:-gZJJlO6EDCvXjvcMWPryqCVGgjQHZL4X}
+      DB_SSLMODE: ${DB_SSLMODE:-require}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://lumin_rndj_user:gZJJlO6EDCvXjvcMWPryqCVGgjQHZL4X@dpg-dbiuhk49v7es738kugf0-a/lumin_rndj}
       APP_ENV: ${APP_ENV:-production}
       ENQUIRY_TO: ${ENQUIRY_TO:-ceo.lumin@gmail.com}
