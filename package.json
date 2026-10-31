@@ -1,0 +1,20 @@
+{
+  "name": "lumin-site",
+  "version": "1.0.0",
+  "description": "Lumin Consultancy Web Portal & Laboratory Management Platform",
+  "main": "index.php",
+  "scripts": {
+    "start": "php -S 0.0.0.0:8080 router.php",
+    "serve": "php -S localhost:8080 router.php"
+  },
+  "keywords": [
+    "lumin",
+    "consultancy",
+    "iso17025",
+    "nabl",
+    "laboratory"
+  ],
+  "author": "Lumin Consultancy",
+  "license": "UNLICENSED"
+}
+

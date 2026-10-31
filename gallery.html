@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--
+  Lumin Consultancy - Laboratory Showcase & Visual Gallery View (gallery.html)
+  Displays photo portfolio of accredited laboratories, testing facilities,
+  and technical infrastructure with a responsive grid and accessible modal lightbox.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery - Lumin Consultancy | Laboratory Showcase & Client Portfolio</title>
+  <meta name="description"
+    content="Explore Lumin Consultancy's gallery showcasing accredited laboratories, testing facilities, client projects, and quality infrastructure.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="images/Icon-Png.png">
+  <link rel="shortcut icon" href="images/Icon-Png.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/Icon-Png.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/gallery.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="index.html#home" aria-label="Lumin Consultancy home">
+        <img src="images/Icon-Png.png" alt="Lumin Logo" style="height: 32px; width: auto;">
+        Lumin Consultancy
+      </a>
+      <nav id="nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#industries">Industries</a></li>
+          <li><a href="index.html#clients">Clients</a></li>
+          <li><a href="index.html#faq">Resources</a></li>
+          <li><a href="gallery.html" class="active-link">Gallery</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-p" href="index.html#contact" data-cta="header">Book a Consultation</a>
+      <button id="menu" aria-expanded="false" aria-controls="nav" aria-label="Toggle navigation">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="menu-text">Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gallery-hero">
+    <div id="particles-js" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+    <div class="wrap" style="position: relative; z-index: 1;">
+      <div
+        style="display: inline-block; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 100px; padding: 6px 18px; font-size: 0.85rem; font-weight: 600; color: #a1b8c7; margin-bottom: 20px;">
+        Visual Portfolio &amp; Facilities
+      </div>
+      <h1>Our Gallery</h1>
+      <p>
+        Explore our engagements across testing facilities, accredited partner laboratories, specialized technical
+        setups, and industrial quality standards.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Content -->
+  <main class="wrap">
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="gallery-grid">
+
+      <!-- Item 1 -->
+      <div class="gallery-card" data-img="images/Gallery/1.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/1.jpeg" alt="Lumin Consultancy Gallery Photo 1" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="gallery-card" data-img="images/Gallery/2.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/2.jpeg" alt="Lumin Consultancy Gallery Photo 2" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="gallery-card" data-img="images/Gallery/3.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/3.jpeg" alt="Lumin Consultancy Gallery Photo 3" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="gallery-card" data-img="images/Gallery/4.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/4.jpeg" alt="Lumin Consultancy Gallery Photo 4" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Item 5 -->
+      <div class="gallery-card" data-img="images/Gallery/5.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/5.jpeg" alt="Lumin Consultancy Gallery Photo 5" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="gallery-card" data-img="images/Gallery/6.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/6.jpeg" alt="Lumin Consultancy Gallery Photo 6" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="gallery-card" data-img="images/Gallery/7.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/7.jpeg" alt="Lumin Consultancy Gallery Photo 7" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="gallery-card" data-img="images/Gallery/8.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/8.jpeg" alt="Lumin Consultancy Gallery Photo 8" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9 -->
+      <div class="gallery-card" data-img="images/Gallery/9.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/9.jpeg" alt="Lumin Consultancy Gallery Photo 9" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10 -->
+      <div class="gallery-card" data-img="images/Gallery/10.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/10.jpeg" alt="Lumin Consultancy Gallery Photo 10" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 11 -->
+      <div class="gallery-card" data-img="images/Gallery/11.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/11.jpeg" alt="Lumin Consultancy Gallery Photo 11" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 12-->
+      <div class="gallery-card" data-img="images/Gallery/12.jpeg">
+        <div class="gallery-img-wrap">
+          <img src="images/Gallery/12.jpeg" alt="Lumin Consultancy Gallery Photo 12" loading="lazy">
+          <div class="gallery-zoom-overlay">
+            <div class="gallery-zoom-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo Preview">
+    <button type="button" class="lightbox-close" id="lightbox-close" title="Close Preview">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrap">
+        <img src="" id="lightbox-img" alt="Gallery Preview">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="fg">
+        <div>
+          <a class="logo" href="index.html#home">
+            <img src="images/Icon-Png.png" alt="Lumin Logo" style="height: 32px; width: auto;">
+            Lumin Consultancy
+          </a>
+          <p>Professional accreditation and quality management consultancy for testing laboratories.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#industries">Industries</a></li>
+            <li><a href="index.html#clients">Clients</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4><a href="index.html#services">Services</a></h4>
+          <ul>
+            <li><a href="index.html#services">NABL Accreditation</a></li>
+            <li><a href="index.html#services">ISO/IEC 17025:2017</a></li>
+            <li><a href="index.html#services">Validation &amp; Uncertainty</a></li>
+            <li><a href="index.html#services">Audits &amp; Training</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy">
+        © 2019 Lumin Consultancy. All rights reserved. · Lumin Consultancy – Lighting Your Path to Accreditation
+        Success.
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky"><a class="btn btn-p" href="index.html#contact" data-cta="sticky">Book a Consultation</a></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="js/gallery.js" defer></script>
+</body>
+
+</html>

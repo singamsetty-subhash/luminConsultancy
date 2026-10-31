@@ -1,0 +1,36 @@
+# ===================================================================
+# Lumin Consultancy - Apache Web Server Configuration (.htaccess)
+# ===================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 1. Route API requests cleanly to Unified API Router
+    RewriteRule ^api(/.*)?$ api/index.php [QSA,L]
+
+    # 2. Prevent direct access to sensitive configuration and source files
+    RewriteRule ^(\.env|\.git|config/|composer\.(json|lock)|schema\.sql|pom\.xml|SRS\.md) - [F,L]
+
+    # 3. Serve existing static files and directories directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # 4. Fallback to custom 404 error document
+    RewriteRule ^.*$ error/404.html [L]
+</IfModule>
+
+# Custom 404 Handler
+ErrorDocument 404 /error/404.html
+
+# Security & Cache Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Default Document Index Order
+DirectoryIndex index.html index.php

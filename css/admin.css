@@ -1,0 +1,650 @@
+/* ==========================================================================
+   Lumin Consultancy - Administrative Portal Stylesheet (admin.css)
+   Includes:
+   - Split login screen layout with responsive background canvas
+   - Authenticated dashboard header, metrics, and search input
+   - Data table design with custom badges, action links, and expand indicators
+   - Accordion sub-row detail card with grid layouts
+   - Action buttons (WhatsApp, Email, Call, Delete)
+   - Centered confirmation modal dialog with backdrop blur
+   - Floating animated toast notifications
+   ========================================================================== */
+
+body {
+    background-color: #f1f5f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.header {
+    background: #0f2a3a;
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+#login-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    background: #fff;
+}
+
+.login-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 12%;
+    background: #fff;
+}
+
+.login-right {
+    background: linear-gradient(135deg, #0f2a3a 0%, #1c4156 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 10%;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-right h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.login-right blockquote {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin: 0 0 32px 0;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.login-top-bar {
+    position: absolute;
+    top: 36px;
+    left: 8%;
+    right: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    color: #0f2a3a;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.brand-logo:hover {
+    opacity: 0.85;
+}
+
+.btn-back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #0f2a3a;
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    border: 1px solid #cbd5e1;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-back-home:hover {
+    background: #0f2a3a;
+    color: #fff;
+    border-color: #0f2a3a;
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(15, 42, 58, 0.15);
+}
+
+.btn-back-home svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-back-home:hover svg {
+    transform: translateX(-3px);
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.login-form-container h2 {
+    font-size: 2rem;
+    color: #0f2a3a;
+    margin-bottom: 8px;
+}
+
+.login-form-container p.subtitle {
+    color: #475569;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    color: #0f172a;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #0f2a3a;
+    box-shadow: 0 0 0 3px rgba(15, 42, 58, 0.1);
+}
+
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover, 
+.input-group input:-webkit-autofill:focus, 
+.input-group input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #0f172a !important;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 16px;
+    background: #0f2a3a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 8px;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.btn-login:hover {
+    background: #1c4156;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+.btn-refresh {
+    background: #c82128;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+}
+
+.btn-refresh:hover {
+    background: #a11a20;
+}
+
+#dashboard-view {
+    display: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.dashboard-content {
+    padding: 32px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.dashboard-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #0f2a3a;
+}
+
+.table-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 1000px;
+}
+
+th,
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+th {
+    background: #0f2a3a;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+tbody tr.main-row {
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+tbody tr.main-row:hover {
+    background: #f1f5f9;
+}
+
+tbody tr.main-row.is-expanded {
+    background: #e2e8f0;
+    border-left: 4px solid #0f2a3a;
+}
+
+.details-row {
+    display: none;
+    background: #f8fafc;
+}
+
+.details-row.is-open {
+    display: table-row;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.details-card {
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    margin: 12px 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    font-size: 0.95rem;
+    color: #0f2a3a;
+    font-weight: 600;
+}
+
+.message-box {
+    background: #f1f5f9;
+    border-left: 4px solid #0f2a3a;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 16px 0 20px 0;
+    color: #1e293b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.details-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.btn-action-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-email {
+    background: #0f2a3a;
+    color: #fff;
+}
+
+.btn-email:hover {
+    background: #1c4156;
+    color: #fff;
+}
+
+.btn-call {
+    background: #e2e8f0;
+    color: #0f2a3a;
+}
+
+.btn-call:hover {
+    background: #cbd5e1;
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: #ffffff;
+}
+
+.btn-whatsapp:hover {
+    background: #1eb956;
+    color: #ffffff;
+}
+
+.btn-delete {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.btn-delete:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+.btn-delete-row {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete-row:hover {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.expand-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #475569;
+    transition: transform 0.2s ease;
+    font-size: 0.8rem;
+}
+
+.is-expanded .expand-indicator {
+    transform: rotate(180deg);
+    background: #0f2a3a;
+    color: #ffffff;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #fef3c7;
+    color: #b45309;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.is-visible {
+    display: flex !important;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-box {
+    background: #ffffff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 460px;
+    padding: 28px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.modal-icon {
+    width: 56px;
+    height: 56px;
+    background: #fee2e2;
+    color: #dc2626;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.modal-desc {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn-modal-cancel {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-modal-confirm {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #dc2626;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+.btn-modal-confirm:hover {
+    background: #b91c1c;
+}
+
+/* Toast notifications */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0f2a3a;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-size: 0.95rem;
+    font-weight: 600;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toast.is-show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#error-msg {
+    color: #dc2626;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    #login-view {
+        grid-template-columns: 1fr;
+    }
+    .login-right {
+        display: none;
+    }
+    .login-left {
+        padding: 40px 24px;
+    }
+    .login-top-bar {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-bottom: 32px;
+        width: 100%;
+    }
+}

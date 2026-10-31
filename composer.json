@@ -1,0 +1,16 @@
+{
+    "name": "lumin/lumin-site",
+    "description": "Lumin Consultancy Web Portal & Laboratory Management Platform (PHP Version)",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.0",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:8080 router.php"
+    }
+}
