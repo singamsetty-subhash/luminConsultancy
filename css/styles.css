@@ -710,11 +710,19 @@
       flex-direction: column;
     }
 
+    .service-content h3 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
     .service-meta-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
@@ -739,14 +747,6 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--accentd);
-    }
-
-    .service-content h3 {
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.25;
-      margin-bottom: 12px;
     }
 
     .service-desc {
