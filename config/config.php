@@ -1,21 +1,26 @@
 <?php
 /**
- * Lumin Consultancy Web Portal & Laboratory Management Platform
- * Central Configuration
+ * Lumin Consultancy - Global Environment & Runtime Configuration
  *
- * Replaces Spring Boot application.properties with unified PHP environment settings.
+ * Dynamically parses environment variables from:
+ * 1. Process environment (Docker / Railway / Render / Production CLI)
+ * 2. Dotenv file (.env in project root, if present)
+ * 3. Sensible development defaults
  */
 
-// Global configuration cache to avoid re-parsing on multiple require calls
+// Singleton configuration cache
 global $luminConfigCache;
-if (isset($luminConfigCache) && is_array($luminConfigCache)) {
+if ($luminConfigCache !== null) {
     return $luminConfigCache;
 }
-
 // Set uniform timezone to Indian Standard Time (Asia/Kolkata, UTC+5:30)
 date_default_timezone_set('Asia/Kolkata');
 
 // Support loading a local .env file if present in project root
+
+// -------------------------------------------------------------------
+// 1. Lightweight Dotenv Parser (zero external dependencies)
+// -------------------------------------------------------------------
 $envFile = __DIR__ . '/../.env';
 if (file_exists($envFile) && is_readable($envFile)) {
     $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -24,12 +29,21 @@ if (file_exists($envFile) && is_readable($envFile)) {
         if ($line === '' || str_starts_with($line, '#')) {
             continue;
         }
+
         if (str_contains($line, '=')) {
             [$key, $val] = explode('=', $line, 2);
             $key = trim($key);
-            $val = trim($val, " \t\n\r\0\x0B\"'");
-            if (!array_key_exists($key, $_SERVER) && !array_key_exists($key, $_ENV)) {
-                putenv("$key=$val");
+            $val = trim($val);
+
+            // Strip surrounding quotes if present
+            if ((str_starts_with($val, '"') && str_ends_with($val, '"')) ||
+                (str_starts_with($val, "'") && str_ends_with($val, "'"))) {
+                $val = substr($val, 1, -1);
+            }
+
+            // Populate process environment if not already defined
+            if (getenv($key) === false) {
+                putenv("{$key}={$val}");
                 $_ENV[$key] = $val;
                 $_SERVER[$key] = $val;
             }
@@ -51,26 +65,42 @@ if (!function_exists('env')) {
 }
 
 // -------------------------------------------------------------------
-// Database Configuration (MySQL)
+// Database Configuration (Supports MySQL & PostgreSQL)
 // -------------------------------------------------------------------
-$dbHost = env('MYSQLHOST', env('DB_HOST', 'localhost'));
-$dbPort = env('MYSQLPORT', env('DB_PORT', '3306'));
-$dbName = env('MYSQLDATABASE', env('DB_NAME', 'lumindb'));
-$dbUser = env('MYSQLUSER', env('DB_USER', 'root'));
-$dbPass = env('MYSQLPASSWORD', env('DB_PASS', 'root'));
+$dbHost   = env('DB_HOST', env('MYSQLHOST', 'dpg-dbiuhk49v7es738kugf0-a'));
+$dbPort   = env('DB_PORT', env('MYSQLPORT', '5432'));
+$dbName   = env('DB_NAME', env('MYSQLDATABASE', 'lumin_rndj'));
+$dbUser   = env('DB_USER', env('MYSQLUSER', 'lumin_rndj_user'));
+$dbPass   = env('DB_PASS', env('MYSQLPASSWORD', 'gZJJlO6EDCvXjvcMWPryqCVGgjQHZL4X'));
+$dbDriver = env('DB_CONNECTION', '');
 
-// Support full URL format (e.g. Railway: mysql://root:pass@host:port/dbname)
-$mysqlUrl = env('MYSQL_URL');
-if (!empty($mysqlUrl)) {
-    $parsed = parse_url($mysqlUrl);
+// Support full URL format (Render: DATABASE_URL, Railway: MYSQL_URL / DATABASE_URL)
+$dbUrl = env('DATABASE_URL', env('MYSQL_URL'));
+if (!empty($dbUrl)) {
+    $parsed = parse_url($dbUrl);
     if ($parsed) {
+        $scheme = $parsed['scheme'] ?? '';
+        if (str_starts_with($scheme, 'postgres') || str_starts_with($scheme, 'pgsql')) {
+            $dbDriver = 'pgsql';
+        } elseif (str_starts_with($scheme, 'mysql')) {
+            $dbDriver = 'mysql';
+        }
         $dbHost = $parsed['host'] ?? $dbHost;
-        $dbPort = (string)($parsed['port'] ?? $dbPort);
+        $dbPort = (string)($parsed['port'] ?? ($dbDriver === 'pgsql' ? '5432' : '3306'));
         $dbUser = $parsed['user'] ?? $dbUser;
         $dbPass = $parsed['pass'] ?? $dbPass;
         if (!empty($parsed['path'])) {
             $dbName = ltrim($parsed['path'], '/');
         }
+    }
+}
+
+// Auto-detect driver if not explicitly specified
+if (empty($dbDriver)) {
+    if ((string)$dbPort === '5432' || str_starts_with((string)$dbHost, 'dpg-') || str_contains((string)$dbHost, 'postgres')) {
+        $dbDriver = 'pgsql';
+    } else {
+        $dbDriver = 'mysql';
     }
 }
 
@@ -81,6 +111,7 @@ $luminConfigCache = [
         'port' => (int)env('PORT', 8080),
     ],
     'db' => [
+        'driver'  => $dbDriver,
         'host'    => $dbHost,
         'port'    => (int)$dbPort,
         'dbname'  => $dbName,
@@ -94,12 +125,12 @@ $luminConfigCache = [
         'port'     => (int)env('SMTP_PORT', 587),
         'username' => env('SMTP_USER', ''),
         'password' => env('SMTP_PASS', ''),
-        'secure'   => env('SMTP_SECURE', 'tls'), // 'tls' or 'ssl'
-        'timeout'  => 8,
+        'secure'   => env('SMTP_SECURE', 'tls'),
+        'fromName' => env('SMTP_FROM_NAME', 'Lumin Consultancy Alerts'),
     ],
     'rate_limit' => [
-        'max_per_hour' => 5,
-        'window_sec'   => 3600,
+        'max_per_hour' => (int)env('RATE_LIMIT_MAX', 10),
+        'window_sec'   => (int)env('RATE_LIMIT_WINDOW', 3600),
     ],
 ];
 

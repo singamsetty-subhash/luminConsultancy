@@ -141,8 +141,7 @@ $preferred    = mb_substr($preferred, 0, 40);
 // 4. Persist enquiry into MySQL database
 try {
     $stmt = $pdo->prepare("
-        INSERT INTO `enquiries` 
-        (`name`, `organization`, `designation`, `email`, `phone`, `sector`, `service`, `status`, `message`, `preferred`, `created_at`)
+        INSERT INTO enquiries (name, organization, designation, email, phone, sector, service, status, message, preferred, created_at)
         VALUES 
         (:name, :org, :desig, :email, :phone, :sector, :service, :status, :message, :pref, NOW())
     ");
@@ -161,7 +160,7 @@ try {
     ]);
 
     $insertId = (int)$pdo->lastInsertId();
-    error_log("Enquiry successfully recorded in MySQL with ID: {$insertId}");
+    error_log("Enquiry successfully recorded with ID: {$insertId}");
 } catch (Throwable $e) {
     error_log("Failed to save enquiry to MySQL: " . $e->getMessage());
     ob_end_clean();

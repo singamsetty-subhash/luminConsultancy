@@ -41,20 +41,20 @@ if ($method === 'GET') {
     try {
         $stmt = $pdo->query("
             SELECT 
-                `id`,
-                `name`,
-                `organization`,
-                `designation`,
-                `email`,
-                `phone`,
-                `sector`,
-                `service`,
-                `status`,
-                `message`,
-                `preferred`,
-                `created_at`
-            FROM `enquiries`
-            ORDER BY `created_at` DESC, `id` DESC
+                id,
+                name,
+                organization,
+                designation,
+                email,
+                phone,
+                sector,
+                service,
+                status,
+                message,
+                preferred,
+                created_at
+            FROM enquiries
+            ORDER BY created_at DESC, id DESC
         ");
 
         $rows = $stmt->fetchAll();
@@ -115,7 +115,7 @@ if ($method === 'DELETE') {
     }
 
     try {
-        $checkStmt = $pdo->prepare("SELECT `id` FROM `enquiries` WHERE `id` = :id LIMIT 1");
+        $checkStmt = $pdo->prepare("SELECT id FROM enquiries WHERE id = :id");
         $checkStmt->execute([':id' => $id]);
         if (!$checkStmt->fetch()) {
             ob_end_clean();
@@ -124,7 +124,7 @@ if ($method === 'DELETE') {
             exit;
         }
 
-        $delStmt = $pdo->prepare("DELETE FROM `enquiries` WHERE `id` = :id LIMIT 1");
+        $delStmt = $pdo->prepare("DELETE FROM enquiries WHERE id = :id");
         $delStmt->execute([':id' => $id]);
 
         ob_end_clean();

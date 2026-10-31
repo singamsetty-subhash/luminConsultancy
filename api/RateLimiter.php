@@ -34,11 +34,11 @@ class RateLimiter {
         if ($pdo !== null) {
             try {
                 // Delete hits older than the cutoff window
-                $stmt = $pdo->prepare("DELETE FROM `rate_limits` WHERE `hit_time` < :cutoff");
+                $stmt = $pdo->prepare("DELETE FROM rate_limits WHERE hit_time < :cutoff");
                 $stmt->execute([':cutoff' => $cutoff]);
 
                 // Count recent hits within window for this IP
-                $stmt = $pdo->prepare("SELECT COUNT(*) FROM `rate_limits` WHERE `ip` = :ip AND `hit_time` >= :cutoff");
+                $stmt = $pdo->prepare("SELECT COUNT(*) FROM rate_limits WHERE ip = :ip AND hit_time >= :cutoff");
                 $stmt->execute([':ip' => $ip, ':cutoff' => $cutoff]);
                 $count = (int)$stmt->fetchColumn();
 
@@ -47,7 +47,7 @@ class RateLimiter {
                 }
 
                 // Record current hit
-                $stmt = $pdo->prepare("INSERT INTO `rate_limits` (`ip`, `hit_time`) VALUES (:ip, :hit_time)");
+                $stmt = $pdo->prepare("INSERT INTO rate_limits (ip, hit_time) VALUES (:ip, :hit_time)");
                 $stmt->execute([':ip' => $ip, ':hit_time' => $now]);
                 return false;
             } catch (Throwable $e) {
@@ -83,7 +83,7 @@ class RateLimiter {
     public static function reset(?PDO $pdo = null): void {
         if ($pdo !== null) {
             try {
-                $pdo->exec("DELETE FROM `rate_limits`");
+                $pdo->exec("DELETE FROM rate_limits");
             } catch (Throwable $e) {
                 error_log("Failed to clear DB rate limits: " . $e->getMessage());
             }
