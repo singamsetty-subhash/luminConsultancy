@@ -1,0 +1,9 @@
+.git
+.gitignore
+.vscode
+dist/
+scratch/
+*.zip
+*.tmp
+*.log
+

@@ -92,6 +92,22 @@ mysql -u root -p < schema.sql
 
 ---
 
+### Method 3: Using Docker & Docker Compose
+1. Ensure Docker is installed and running.
+2. Build and start the containerized stack (PHP 8.2 + Apache & MySQL 8.0):
+   `ash
+   docker compose up -d
+   `
+3. Access the application:
+   - **Public Portal**: [http://localhost:8080/](http://localhost:8080/)
+   - **Administrative Dashboard**: [http://localhost:8080/admin.html](http://localhost:8080/admin.html) *(Credentials: Lumin_admin / Veda@789)*
+4. To stop the containers:
+   `ash
+   docker compose down
+   `
+
+---
+
 ## 🌐 API Reference
 
 ### 1. Submit Consultation Enquiry

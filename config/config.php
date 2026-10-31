@@ -53,11 +53,11 @@ if (!function_exists('env')) {
 // -------------------------------------------------------------------
 // Database Configuration (MySQL)
 // -------------------------------------------------------------------
-$dbHost = env('MYSQLHOST', env('DB_HOST', 'sakura.proxy.rlwy.net'));
-$dbPort = env('MYSQLPORT', env('DB_PORT', '30147'));
-$dbName = env('MYSQLDATABASE', env('DB_NAME', 'railway'));
+$dbHost = env('MYSQLHOST', env('DB_HOST', 'localhost'));
+$dbPort = env('MYSQLPORT', env('DB_PORT', '3306'));
+$dbName = env('MYSQLDATABASE', env('DB_NAME', 'lumindb'));
 $dbUser = env('MYSQLUSER', env('DB_USER', 'root'));
-$dbPass = env('MYSQLPASSWORD', env('DB_PASS', 'deriLoedzlzqziaXGvtzZEzkmdmWDPgS'));
+$dbPass = env('MYSQLPASSWORD', env('DB_PASS', 'root'));
 
 // Support full URL format (e.g. Railway: mysql://root:pass@host:port/dbname)
 $mysqlUrl = env('MYSQL_URL');
