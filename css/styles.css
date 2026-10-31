@@ -644,23 +644,7 @@
       transform: scale(1.05);
     }
 
-    .service-pill-tag {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(15, 42, 58, 0.88);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: #ffffff;
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      z-index: 2;
-    }
+    .service-pill-tag { display: none; }
 
     .service-deliverable-card {
       background: #f8fafc;
@@ -840,53 +824,7 @@
       display: inline;
     }
 
-    /* SEO Keywords Tag Cloud */
-    .services-seo-cloud {
-      margin-top: 48px;
-      padding: 20px 24px;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 2px 12px rgba(15, 42, 58, 0.03);
-    }
 
-    .seo-cloud-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--ink);
-      white-space: nowrap;
-    }
-
-    .seo-tags-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .seo-tag-pill {
-      display: inline-block;
-      padding: 6px 14px;
-      background: #f1f5f9;
-      color: var(--ink2);
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-
-    .seo-tag-pill:hover {
-      background: #fef3c7;
-      color: var(--accentd);
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
 
     @media (max-width: 991px) {
       .service-card {
@@ -1467,39 +1405,27 @@
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 210px;
+      aspect-ratio: 1 / 1;
+      height: auto;
       overflow: hidden;
-      background: #e2e8f0;
+      background: #f8fafc;
+      border-bottom: 1px solid #edf2f7;
     }
 
     .card-img-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+      object-fit: contain;
+      transition: transform 0.4s ease;
       display: block;
     }
 
     .industry-slide-card:hover .card-img-wrap img {
-      transform: scale(1.06);
+      transform: scale(1.03);
     }
 
     .card-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(15, 42, 58, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: #ffffff;
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      z-index: 2;
+      display: none;
     }
 
     .card-body {
