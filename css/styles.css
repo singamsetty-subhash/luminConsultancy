@@ -828,12 +828,80 @@
 
     @media (max-width: 991px) {
       .service-card {
-        grid-template-columns: 1fr;
-        gap: 26px;
-        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 24px 20px;
       }
+
+      .service-media,
+      .service-content {
+        display: contents;
+      }
+
+      /* 1. Title comes first */
+      .service-content h3 {
+        order: 1;
+        margin-bottom: 2px;
+      }
+
+      /* 2. Number badge and tagline */
+      .service-meta-header {
+        order: 2;
+        margin-bottom: 14px;
+      }
+
+      /* 3. Image */
       .service-img-box {
+        order: 3;
         height: 230px;
+        margin-bottom: 2px;
+      }
+
+      /* 4. Deliverable highlight card */
+      .service-deliverable-card {
+        order: 4;
+        margin-bottom: 4px;
+      }
+
+      /* 5. Description paragraph */
+      .service-desc {
+        order: 5;
+        margin-bottom: 12px;
+      }
+
+      /* 6. Scope & Implementation Capabilities checklist */
+      .service-capabilities-wrapper {
+        order: 6;
+        margin-bottom: 8px;
+      }
+
+      /* 7. Action Button (Discuss / Enroll) at the very end of the card */
+      .service-action-btn {
+        order: 7;
+        margin-top: 10px;
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .service-card {
+        padding: 20px 16px;
+        gap: 15px;
+      }
+
+      .service-content h3 {
+        font-size: 1.35rem;
+      }
+
+      .service-img-box {
+        height: 210px;
+      }
+
+      .service-scope-list {
+        grid-template-columns: 1fr;
       }
     }
 
