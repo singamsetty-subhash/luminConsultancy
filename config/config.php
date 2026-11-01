@@ -63,12 +63,12 @@ if (!function_exists('env')) {
 // -------------------------------------------------------------------
 // Database Configuration (Supports Render PostgreSQL & MySQL)
 // -------------------------------------------------------------------
-$dbHost   = env('DB_HOST', env('MYSQLHOST', 'dpg-dbiuhk49v7es738kugf0-a'));
-$dbPort   = env('DB_PORT', env('MYSQLPORT', '5432'));
-$dbName   = env('DB_NAME', env('MYSQLDATABASE', 'lumin_rndj'));
-$dbUser   = env('DB_USER', env('MYSQLUSER', 'lumin_rndj_user'));
-$dbPass   = env('DB_PASS', env('MYSQLPASSWORD', 'gZJJlO6EDCvXjvcMWPryqCVGgjQHZL4X'));
-$dbDriver = env('DB_CONNECTION', '');
+$dbHost   = env('DB_HOST', env('MYSQLHOST', 'localhost'));
+$dbPort   = env('DB_PORT', env('MYSQLPORT', '3306'));
+$dbName   = env('DB_NAME', env('MYSQLDATABASE', 'lumindb'));
+$dbUser   = env('DB_USER', env('MYSQLUSER', 'root'));
+$dbPass   = env('DB_PASS', env('MYSQLPASSWORD', 'root'));
+$dbDriver = env('DB_CONNECTION', 'mysql');
 $dbSslMode = env('DB_SSLMODE', 'prefer');
 
 // Support full URL format (Render: DATABASE_URL, Railway: MYSQL_URL / DATABASE_URL)
