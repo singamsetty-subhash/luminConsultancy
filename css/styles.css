@@ -1537,6 +1537,27 @@
       border-radius: 6px;
     }
 
+    .card-footer-tags.tags-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .card-footer-tags.tags-grid-2 .card-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6px 8px;
+      font-size: 0.72rem;
+      line-height: 1.25;
+      min-height: 32px;
+    }
+
+    .card-footer-tags.tags-grid-2 .card-tag:last-child:nth-child(odd) {
+      grid-column: span 2;
+    }
+
     .industry-slider-pagination {
       display: flex;
       align-items: center;
