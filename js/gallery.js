@@ -108,6 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
+  // Sticky Header Dynamic Elevation Effect
+  // =========================================================================
+  const siteHeader = document.querySelector('header');
+  if (siteHeader) {
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        siteHeader.classList.add('is-scrolled');
+      } else {
+        siteHeader.classList.remove('is-scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // =========================================================================
   // Full-Screen Image Lightbox Viewer
   // =========================================================================
   const lightbox = document.getElementById('lightbox');
