@@ -475,6 +475,135 @@
       font-size: .97rem
     }
 
+    /* ===================================================================
+       About Section & Master Card Component Styles
+       =================================================================== */
+    .about-section {
+      background: var(--paper);
+      padding: 72px 0;
+      position: relative;
+    }
+
+    .about-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 48px 52px;
+      box-shadow: 0 10px 32px rgba(15, 42, 58, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .about-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, #f6c867 50%, var(--accent) 100%);
+    }
+
+    .about-card:hover {
+      box-shadow: 0 16px 42px rgba(15, 42, 58, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .about-two {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232, 169, 35, 0.12);
+      color: var(--accentd);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(232, 169, 35, 0.25);
+    }
+
+    .about-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .about-content h2 {
+      font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+
+    .about-content p {
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.72;
+      margin-bottom: 16px;
+    }
+
+    .about-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-lead {
+      font-weight: 500;
+      color: var(--ink2);
+    }
+
+    .about-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pillar-card {
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px 22px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .pillar-card:hover {
+      background: #ffffff;
+      transform: translateX(6px);
+      border-color: #e2e8f0;
+      border-left-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(15, 42, 58, 0.06);
+    }
+
+    .pillar-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .pillar-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
@@ -2168,6 +2297,13 @@
     }
 
     @media(max-width: 900px) {
+      .about-card {
+        padding: 34px 26px;
+      }
+      .about-two {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
       section {
         padding: 60px 0;
       }
@@ -2206,6 +2342,19 @@
     }
 
     @media(max-width: 600px) {
+      .about-section {
+        padding: 48px 0;
+      }
+      .about-card {
+        padding: 24px 16px;
+        border-radius: 16px;
+      }
+      .pillar-card {
+        padding: 16px 16px;
+      }
+      .pillar-card:hover {
+        transform: none;
+      }
       .wrap {
         padding: 0 18px;
       }
