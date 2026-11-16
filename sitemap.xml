@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Primary Homepage & Services Portal -->
+  <url>
+    <loc>https://luminconsultancy.com/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Service 1: NABL Accreditation Consultancy (ISO/IEC 17025:2017) -->
+  <url>
+    <loc>https://luminconsultancy.com/#service-nabl</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 2: Annual Maintenance Consultancy (AMC) – NABL 360° -->
+  <url>
+    <loc>https://luminconsultancy.com/#service-amc</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 3: LUMIN TRAINING ACADEMY – Training & Development Services -->
+  <url>
+    <loc>https://luminconsultancy.com/#service-academy</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 4: Integrated Regulatory Assessment & Certification Support -->
+  <url>
+    <loc>https://luminconsultancy.com/#service-regulatory</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 5: LUMIN – Complete Laboratory Solutions Partner -->
+  <url>
+    <loc>https://luminconsultancy.com/#service-solutions</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Industry Sectors Supported -->
+  <url>
+    <loc>https://luminconsultancy.com/#industries</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- About Us & Quality Pillars -->
+  <url>
+    <loc>https://luminconsultancy.com/#about</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Frequently Asked Questions & Technical Resources -->
+  <url>
+    <loc>https://luminconsultancy.com/#faq</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Consultation Booking & Contact -->
+  <url>
+    <loc>https://luminconsultancy.com/#contact</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Visual Gallery Portfolio & Laboratory Showcase -->
+  <url>
+    <loc>https://luminconsultancy.com/gallery.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
+

@@ -1,10 +1,10 @@
 -- ===================================================================
 -- Lumin Consultancy Web Portal & Laboratory Management Platform
--- Database Schemas for PostgreSQL (Render) & MySQL
+-- Database Schemas for MySQL & PostgreSQL
 -- ===================================================================
 
 -- -------------------------------------------------------------------
--- SECTION 1: PostgreSQL Schema (Render / Supabase / Neon)
+-- SECTION 1: PostgreSQL Schema
 -- -------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS enquiries (

@@ -61,14 +61,14 @@ exit /b 1
 :FOUND_PHP
 echo [OK] Using PHP: !PHP_CMD!
 echo.
-echo Starting web server on http://localhost:8080 ...
+echo Starting web server on http://localhost:8000 ...
 echo Press Ctrl+C to stop the server.
 echo.
 
 :: Automatically open browser after 1.5 seconds
-start "" cmd /c "timeout /t 2 /nobreak >nul && start http://localhost:8080/"
+start "" cmd /c "timeout /t 2 /nobreak >nul && start http://localhost:8000/"
 
 :: Start PHP built-in web server with custom router
-"!PHP_CMD!" -S localhost:8080 router.php
+"!PHP_CMD!" -S 127.0.0.1:8000 router.php
 
 pause

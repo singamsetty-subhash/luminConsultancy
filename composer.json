@@ -11,6 +11,6 @@
         "ext-mbstring": "*"
     },
     "scripts": {
-        "start": "php -S 0.0.0.0:8080 router.php"
+        "start": "php -S 0.0.0.0:8000 router.php"
     }
 }

@@ -1,6 +1,6 @@
 # ===================================================================
 # Lumin Consultancy - Production Dockerfile (PHP 8.2 + Apache)
-# Supports MySQL & PostgreSQL, with dynamic PORT for Cloud (Render, Railway, etc.)
+# Supports MySQL & PostgreSQL, with dynamic PORT configuration
 # ===================================================================
 FROM php:8.2-apache
 
@@ -45,9 +45,9 @@ COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh \
     && chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Expose default port (Render will use PORT environment variable, defaults to 8080)
-ENV PORT=8080
-EXPOSE 8080 10000
+# Expose default port (defaults to 8000)
+ENV PORT=8000
+EXPOSE 8000
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]

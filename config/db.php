@@ -1,7 +1,7 @@
 <?php
 /**
  * Lumin Consultancy - Database Connection & Schema Provisioning
- * Supports PostgreSQL (Render) and MySQL with automated schema provisioning.
+ * Supports MySQL (default) and PostgreSQL with automated schema provisioning.
  */
 
 class Database {
@@ -42,10 +42,6 @@ class Database {
 
         try {
             if ($isPgsql) {
-                // Cloud PostgreSQL (Render / Supabase / Neon / AWS RDS) requires SSL
-                if (str_contains((string)$host, 'render.com') || str_starts_with((string)$host, 'dpg-')) {
-                    $sslmode = 'require';
-                }
                 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=$sslmode";
             } else {
                 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";

@@ -14,7 +14,7 @@ if ! command -v php &> /dev/null; then
     exit 1
 fi
 
-PORT="${PORT:-8080}"
+PORT="${PORT:-8000}"
 echo "[OK] Starting PHP built-in web server on http://localhost:${PORT} ..."
 echo "Press Ctrl+C to stop the server."
 echo ""

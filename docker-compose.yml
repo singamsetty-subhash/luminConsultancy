@@ -6,11 +6,11 @@ services:
     container_name: lumin_site_app
     restart: unless-stopped
     ports:
-      - "${PORT:-8080}:${PORT:-8080}"
+      - "${PORT:-8000}:${PORT:-8000}"
     env_file:
       - .env
     environment:
-      PORT: ${PORT:-8080}
+      PORT: ${PORT:-8000}
       DB_CONNECTION: ${DB_CONNECTION:-mysql}
       DB_HOST: ${DB_HOST:-localhost}
       DB_PORT: ${DB_PORT:-3306}

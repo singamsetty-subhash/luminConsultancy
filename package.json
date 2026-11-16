@@ -4,8 +4,8 @@
   "description": "Lumin Consultancy Web Portal & Laboratory Management Platform",
   "main": "index.php",
   "scripts": {
-    "start": "php -S 0.0.0.0:8080 router.php",
-    "serve": "php -S localhost:8080 router.php"
+    "start": "php -S 0.0.0.0:8000 router.php",
+    "serve": "php -S localhost:8000 router.php"
   },
   "keywords": [
     "lumin",

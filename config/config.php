@@ -3,9 +3,9 @@
  * Lumin Consultancy - Global Environment & Runtime Configuration
  *
  * Dynamically parses environment variables from:
- * 1. Process environment (Docker / Railway / Render / Production CLI)
+ * 1. Process environment (Docker / Standard Host / Production CLI)
  * 2. Dotenv file (.env in project root, if present)
- * 3. Production defaults (Render PostgreSQL database)
+ * 3. Default configuration (MySQL database)
  */
 
 // Singleton configuration cache
@@ -61,7 +61,7 @@ if (!function_exists('env')) {
 }
 
 // -------------------------------------------------------------------
-// Database Configuration (Supports Render PostgreSQL & MySQL)
+// Database Configuration (MySQL / Generic PDO)
 // -------------------------------------------------------------------
 $dbHost   = env('DB_HOST', env('MYSQLHOST', 'localhost'));
 $dbPort   = env('DB_PORT', env('MYSQLPORT', '3306'));
@@ -71,7 +71,7 @@ $dbPass   = env('DB_PASS', env('MYSQLPASSWORD', 'root'));
 $dbDriver = env('DB_CONNECTION', 'mysql');
 $dbSslMode = env('DB_SSLMODE', 'prefer');
 
-// Support full URL format (Render: DATABASE_URL, Railway: MYSQL_URL / DATABASE_URL)
+// Support full URL format (DATABASE_URL / MYSQL_URL)
 $dbUrl = env('DATABASE_URL', env('MYSQL_URL'));
 if (!empty($dbUrl)) {
     $parsed = parse_url($dbUrl);
@@ -92,20 +92,16 @@ if (!empty($dbUrl)) {
     }
 }
 
-// Auto-detect driver if not explicitly specified
+// Default driver to mysql
 if (empty($dbDriver)) {
-    if ((string)$dbPort === '5432' || str_starts_with((string)$dbHost, 'dpg-') || str_contains((string)$dbHost, 'postgres')) {
-        $dbDriver = 'pgsql';
-    } else {
-        $dbDriver = 'mysql';
-    }
+    $dbDriver = ((string)$dbPort === '5432' || str_contains((string)$dbHost, 'postgres')) ? 'pgsql' : 'mysql';
 }
 
 $luminConfigCache = [
     'app' => [
         'name' => 'Lumin Consultancy',
-        'env'  => env('APP_ENV', 'production'),
-        'port' => (int)env('PORT', 8080),
+        'env'  => env('APP_ENV', 'development'),
+        'port' => (int)env('PORT', 8000),
     ],
     'db' => [
         'driver'  => $dbDriver,
