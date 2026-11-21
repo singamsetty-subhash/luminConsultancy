@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--
-  Lumin Consultancy - Custom 404 HTTP Error View
-  Served automatically by Spring Boot when requested resources or endpoints do not exist.
+  Lumin Consultancy - Custom 404 HTTP Error View with Smart Sitelink Fallback Redirection
 -->
 <html lang="en-IN">
 <head>
@@ -9,6 +8,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | Lumin Consultancy</title>
   <meta name="robots" content="noindex">
+  <script>
+    (function() {
+      // Smart client-side mapping for Google sitelinks & legacy URLs
+      var path = window.location.pathname.toLowerCase().replace(/^\/+|\/+$/g, '');
+      var routes = {
+        'contact-us': '/#contact',
+        'contact': '/#contact',
+        'about': '/#about',
+        'about-us': '/#about',
+        'services': '/#services',
+        'service': '/#services',
+        'gallery': '/gallery.html',
+        'industries': '/#industries',
+        'industry': '/#industries',
+        'clients': '/#clients',
+        'client': '/#clients',
+        'faq': '/#faq',
+        'faqs': '/#faq',
+        'nabl': '/#service-nabl',
+        'nabl-accreditation': '/#service-nabl',
+        'amc': '/#service-amc',
+        'training': '/#service-academy',
+        'regulatory': '/#service-regulatory',
+        'solutions': '/#service-solutions'
+      };
+      if (routes[path]) {
+        window.location.replace(routes[path]);
+      }
+    })();
+  </script>
   <style>
     body {
       margin: 0;
@@ -39,6 +68,10 @@
       padding: 14px 26px;
       border-radius: 8px;
       text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    a:hover {
+      background: #f6c867;
     }
   </style>
 </head>

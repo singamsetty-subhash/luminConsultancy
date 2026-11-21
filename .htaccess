@@ -12,12 +12,26 @@
     # 2. Prevent direct access to sensitive configuration and source files
     RewriteRule ^(\.env|\.git|config/|composer\.(json|lock)|schema\.sql|pom\.xml|SRS\.md) - [F,L]
 
-    # 3. Serve existing static files and directories directly
+    # 3. Legacy SEO Sitelink Mappings (301 Permanent Redirects for Google Search Sitelinks)
+    RewriteRule ^contact(-us)?/?$ /#contact [R=301,NE,L]
+    RewriteRule ^about(-us)?/?$ /#about [R=301,NE,L]
+    RewriteRule ^services?/?$ /#services [R=301,NE,L]
+    RewriteRule ^industr(ies|y)/?$ /#industries [R=301,NE,L]
+    RewriteRule ^gallery/?$ /gallery.html [R=301,L]
+    RewriteRule ^clients?/?$ /#clients [R=301,NE,L]
+    RewriteRule ^faqs?/?$ /#faq [R=301,NE,L]
+    RewriteRule ^nabl(-accreditation)?/?$ /#service-nabl [R=301,NE,L]
+    RewriteRule ^(amc|annual-maintenance)/?$ /#service-amc [R=301,NE,L]
+    RewriteRule ^(training|academy)/?$ /#service-academy [R=301,NE,L]
+    RewriteRule ^regulatory/?$ /#service-regulatory [R=301,NE,L]
+    RewriteRule ^solutions/?$ /#service-solutions [R=301,NE,L]
+
+    # 4. Serve existing static files and directories directly
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # 4. Fallback to custom 404 error document
+    # 5. Fallback to custom 404 error document
     RewriteRule ^.*$ error/404.html [L]
 </IfModule>
 

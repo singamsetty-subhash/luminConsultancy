@@ -1,7 +1,7 @@
 <?php
 /**
  * Lumin Consultancy - Built-in PHP Development Server Router
- * Usage: php -S localhost:8080 router.php
+ * Usage: php -S localhost:8000 router.php
  */
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -13,7 +13,37 @@ if (str_starts_with($uri, '/api')) {
     exit;
 }
 
-// 2. Route root URL to index.html
+// 2. Legacy SEO Sitelink Mappings (Google Search Sitelinks & Deep Links)
+$cleanUri = trim(strtolower($uri), '/');
+$legacyRoutes = [
+    'contact-us' => '/#contact',
+    'contact'    => '/#contact',
+    'about'      => '/#about',
+    'about-us'   => '/#about',
+    'services'   => '/#services',
+    'service'    => '/#services',
+    'gallery'    => '/gallery.html',
+    'industries' => '/#industries',
+    'industry'   => '/#industries',
+    'clients'    => '/#clients',
+    'client'     => '/#clients',
+    'faq'        => '/#faq',
+    'faqs'       => '/#faq',
+    'nabl'       => '/#service-nabl',
+    'nabl-accreditation' => '/#service-nabl',
+    'amc'        => '/#service-amc',
+    'training'   => '/#service-academy',
+    'regulatory' => '/#service-regulatory',
+    'solutions'  => '/#service-solutions',
+];
+
+if (isset($legacyRoutes[$cleanUri])) {
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: ' . $legacyRoutes[$cleanUri]);
+    exit;
+}
+
+// 3. Route root URL to index.html
 if ($uri === '/' || $uri === '') {
     $index = __DIR__ . '/index.html';
     if (file_exists($index)) {
@@ -23,7 +53,7 @@ if ($uri === '/' || $uri === '') {
     }
 }
 
-// 3. Serve existing static files directly
+// 4. Serve existing static files directly
 if ($uri !== '/' && file_exists($file) && is_file($file)) {
     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
     $mimes = [
@@ -52,7 +82,7 @@ if ($uri !== '/' && file_exists($file) && is_file($file)) {
     exit;
 }
 
-// 4. Fallback to custom 404 page for missing routes
+// 5. Fallback to custom 404 page for missing routes
 http_response_code(404);
 $notFoundPage = __DIR__ . '/error/404.html';
 if (file_exists($notFoundPage)) {
