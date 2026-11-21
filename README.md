@@ -77,7 +77,7 @@ mysql -u root -p < schema.sql
 3. Open your browser:
    - **Public Portal**: [http://localhost:8080/](http://localhost:8080/)
    - **Visual Gallery**: [http://localhost:8080/gallery.html](http://localhost:8080/gallery.html)
-   - **Administrative Dashboard**: [http://localhost:8080/admin.html](http://localhost:8080/admin.html) *(Credentials: `Lumin_admin` / `Veda@789`)* 
+   - **Administrative Dashboard**: [http://localhost:8080/admin.html](http://localhost:8080/admin.html) *(Credentials: `
 
 ---
 
