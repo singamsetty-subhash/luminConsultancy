@@ -2443,3 +2443,70 @@
         transition: none !important
       }
     }
+
+/* ==========================================================================
+   Animated Number Counter Styles
+   ========================================================================== */
+.stat-counter {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+
+.insight-stat-item {
+  transition: transform 0.3s ease;
+}
+
+.insight-stat-item:hover {
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   Cinematic Scroll Unveiling & Reveal Effect
+   ========================================================================== */
+.unveil-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.unveil-fade.is-unveiled {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.unveil-scale {
+  opacity: 0;
+  transform: translateY(32px) scale(0.92);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.unveil-scale.is-unveiled {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.unveil-scale.is-unveiled:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Staggered delay for stat counters cascade */
+.insights-grid .insight-stat-item:nth-child(1) { transition-delay: 0.04s; }
+.insights-grid .insight-stat-item:nth-child(2) { transition-delay: 0.16s; }
+.insights-grid .insight-stat-item:nth-child(3) { transition-delay: 0.28s; }
+.insights-grid .insight-stat-item:nth-child(4) { transition-delay: 0.40s; }
+
+.insight-stat-item {
+  position: relative;
+  border-radius: 16px;
+  padding: 16px 12px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.insight-stat-item:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(15, 42, 58, 0.06);
+}

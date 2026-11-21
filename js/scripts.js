@@ -555,4 +555,122 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+  // =========================================================================
+  // Unveiling & Number Increment System (Scroll Reveal & Re-reveal)
+  // =========================================================================
+  function initUnveilEffects() {
+    const unveilElements = document.querySelectorAll(".unveil-fade, .unveil-scale, .insight-stat-item");
+    const statCounters = document.querySelectorAll(".stat-counter");
+    if (!unveilElements.length && !statCounters.length) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      unveilElements.forEach(el => el.classList.add("is-unveiled"));
+      statCounters.forEach(c => {
+        c.textContent = c.getAttribute("data-target") || "0";
+      });
+      return;
+    }
+
+    /**
+     * Smoothly increments a counter from 0 to data-target using cubic easeOut
+     * @param {HTMLElement} el
+     */
+    function animateCounter(el) {
+      if (el.dataset.animating === "true") return;
+      el.dataset.animating = "true";
+
+      const target = parseInt(el.getAttribute("data-target"), 10);
+      if (isNaN(target)) return;
+
+      const duration = target >= 100 ? 1900 : (target >= 20 ? 1500 : 1200);
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const currentVal = Math.round(ease * target);
+
+        el.textContent = currentVal;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target;
+          el.dataset.animating = "false";
+          el.dataset.completed = "true";
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    /**
+     * Resets a counter back to 0 so it can re-increment on next reveal
+     * @param {HTMLElement} el
+     */
+    function resetCounter(el) {
+      el.dataset.animating = "false";
+      el.dataset.completed = "false";
+      el.textContent = "0";
+    }
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const targetEl = entry.target;
+
+          if (entry.isIntersecting) {
+            // Unveil element into view
+            targetEl.classList.add("is-unveiled");
+
+            // Trigger counter animation if inside or on target
+            const counters = targetEl.classList.contains("stat-counter")
+              ? [targetEl]
+              : targetEl.querySelectorAll(".stat-counter");
+            counters.forEach(counter => {
+              if (counter.dataset.completed !== "true") {
+                animateCounter(counter);
+              }
+            });
+          } else {
+            // When scrolled completely away from view, un-reveal and reset
+            const rect = entry.boundingClientRect;
+            const isCompletelyAway = rect.top > window.innerHeight || rect.bottom < 0;
+
+            if (isCompletelyAway) {
+              targetEl.classList.remove("is-unveiled");
+              const counters = targetEl.classList.contains("stat-counter")
+                ? [targetEl]
+                : targetEl.querySelectorAll(".stat-counter");
+              counters.forEach(counter => {
+                resetCounter(counter);
+              });
+            }
+          }
+        });
+      }, {
+        threshold: 0.18,
+        rootMargin: "0px 0px -30px 0px"
+      });
+
+      unveilElements.forEach(el => observer.observe(el));
+
+      // Also observe standalone counters in expert cards
+      statCounters.forEach(counter => {
+        if (!counter.closest(".unveil-fade") && !counter.closest(".unveil-scale") && !counter.closest(".insight-stat-item")) {
+          observer.observe(counter);
+        }
+      });
+    } else {
+      unveilElements.forEach(el => el.classList.add("is-unveiled"));
+      statCounters.forEach(animateCounter);
+    }
+  }
+
+  initUnveilEffects();
+
 });

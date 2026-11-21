@@ -380,7 +380,7 @@
          =================================================================== -->
     <section id="about" class="about-section">
       <div class="wrap">
-        <div class="about-card">
+        <div class="about-card unveil-fade">
           <div class="two about-two">
             <div class="about-content">
               <span class="about-badge">
@@ -419,30 +419,35 @@
     <section class="insights"
       style="background-image: radial-gradient(circle at center, var(--line) 1px, transparent 1px); background-size: 40px 40px; padding: 100px 0;">
       <div class="wrap" style="text-align: center;">
-        <h4
+        <h4 class="unveil-fade"
           style="color: var(--ink2); text-transform: uppercase; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 12px;">
           Company Success</h4>
-        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--ink); margin-bottom: 56px;">
+        <h2 class="unveil-fade" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--ink); margin-bottom: 56px;">
           Some interesting insights about our consulting services</h2>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px;">
-          <div>
-            <div style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">7<span
-                style="font-size: 2.5rem;">+</span></div>
+        <div class="insights-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px;">
+          <div class="insight-stat-item unveil-scale">
+            <div class="insight-stat-number" style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">
+              <span class="stat-counter" data-target="7">0</span><span class="stat-suffix" style="font-size: 2.5rem;">+</span>
+            </div>
             <div style="color: var(--muted); font-size: 1.1rem; margin-top: 12px;">Years of Excellence</div>
           </div>
-          <div>
-            <div style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">100<span
-                style="font-size: 2.5rem;">%</span></div>
+          <div class="insight-stat-item unveil-scale">
+            <div class="insight-stat-number" style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">
+              <span class="stat-counter" data-target="100">0</span><span class="stat-suffix" style="font-size: 2.5rem;">%</span>
+            </div>
             <div style="color: var(--muted); font-size: 1.1rem; margin-top: 12px;">Client Satisfaction</div>
           </div>
-          <div>
-            <div style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">200<span
-                style="font-size: 2.5rem;">+</span></div>
+          <div class="insight-stat-item unveil-scale">
+            <div class="insight-stat-number" style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">
+              <span class="stat-counter" data-target="200">0</span><span class="stat-suffix" style="font-size: 2.5rem;">+</span>
+            </div>
             <div style="color: var(--muted); font-size: 1.1rem; margin-top: 12px;">Labs Accredited</div>
           </div>
-          <div>
-            <div style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">8</div>
+          <div class="insight-stat-item unveil-scale">
+            <div class="insight-stat-number" style="font-size: 4.5rem; font-weight: 800; color: var(--ink2); line-height: 1;">
+              <span class="stat-counter" data-target="8">0</span>
+            </div>
             <div style="color: var(--muted); font-size: 1.1rem; margin-top: 12px;">Expert Consultants</div>
           </div>
         </div>
@@ -482,7 +487,7 @@
         <div class="services-list" id="servicesList">
 
           <!-- 1. NABL Accreditation Consultancy -->
-          <article class="service-card" id="service-nabl" data-category="service-nabl">
+          <article class="service-card unveil-fade" id="service-nabl" data-category="service-nabl">
             <div class="service-media">
               <div class="service-img-box">
                 <img src="images/services/nabl-accreditation.jpg"
@@ -588,7 +593,7 @@
           </article>
 
           <!-- 2. Annual Maintenance Consultancy (AMC) – NABL 360° -->
-          <article class="service-card" id="service-amc" data-category="service-amc">
+          <article class="service-card unveil-fade" id="service-amc" data-category="service-amc">
             <div class="service-media">
               <div class="service-img-box">
                 <img src="images/services/nabl-amc-360.jpg" alt="Annual Maintenance Consultancy (AMC) - NABL 360"
@@ -703,7 +708,7 @@
           </article>
 
           <!-- 3. LUMIN TRAINING ACADEMY -->
-          <article class="service-card" id="service-academy" data-category="service-academy">
+          <article class="service-card unveil-fade" id="service-academy" data-category="service-academy">
             <div class="service-media">
               <div class="service-img-box">
                 <img src="images/services/lumin-academy.jpg"
@@ -820,7 +825,7 @@
           </article>
 
           <!-- 4. Integrated Regulatory Assessment & Certification Support -->
-          <article class="service-card" id="service-regulatory" data-category="service-regulatory">
+          <article class="service-card unveil-fade" id="service-regulatory" data-category="service-regulatory">
             <div class="service-media">
               <div class="service-img-box">
                 <img src="images/services/regulatory-support.jpg"
@@ -929,7 +934,7 @@
           </article>
 
           <!-- 5. LUMIN – Complete Laboratory Solutions Partner -->
-          <article class="service-card" id="service-solutions" data-category="service-solutions">
+          <article class="service-card unveil-fade" id="service-solutions" data-category="service-solutions">
             <div class="service-media">
               <div class="service-img-box">
                 <img src="images/services/lab-solutions-partner.jpg" alt="LUMIN - Complete Laboratory Solutions Partner"
@@ -1704,7 +1709,7 @@
 
         <div class="experts-grid">
           <!-- Card 1 -->
-          <div class="expert-card">
+          <div class="expert-card unveil-fade">
             <div class="exp-avatar exp-blue">SP</div>
             <h3>SVRK Prasad</h3>
             <div class="exp-role exp-role-blue"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
@@ -1722,9 +1727,9 @@
             </div>
 
             <div class="exp-stats">
-              <div class="stat-box"><strong>25+</strong><span>Years Exp.</span></div>
-              <div class="stat-box"><strong>200+</strong><span>Labs Guided</span></div>
-              <div class="stat-box"><strong>500+</strong><span>Trainings</span></div>
+              <div class="stat-box"><strong><span class="stat-counter" data-target="25">0</span>+</strong><span>Years Exp.</span></div>
+              <div class="stat-box"><strong><span class="stat-counter" data-target="200">0</span>+</strong><span>Labs Guided</span></div>
+              <div class="stat-box"><strong><span class="stat-counter" data-target="500">0</span>+</strong><span>Trainings</span></div>
             </div>
 
             <div class="exp-social">
@@ -1746,7 +1751,7 @@
           </div>
 
           <!-- Card 2 -->
-          <div class="expert-card">
+          <div class="expert-card unveil-fade">
             <div class="exp-avatar exp-gold">RY</div>
             <h3>Radhika Yalamarthy</h3>
             <div class="exp-role exp-role-gold"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
@@ -1764,9 +1769,9 @@
             </div>
 
             <div class="exp-stats">
-              <div class="stat-box"><strong>100%</strong><span>Satisfaction</span></div>
-              <div class="stat-box"><strong>200+</strong><span>Projects</span></div>
-              <div class="stat-box"><strong>6+</strong><span>Years</span></div>
+              <div class="stat-box"><strong><span class="stat-counter" data-target="100">0</span>%</strong><span>Satisfaction</span></div>
+              <div class="stat-box"><strong><span class="stat-counter" data-target="200">0</span>+</strong><span>Projects</span></div>
+              <div class="stat-box"><strong><span class="stat-counter" data-target="6">0</span>+</strong><span>Years</span></div>
             </div>
 
             <div class="exp-social">
